@@ -34,18 +34,19 @@ module.exports = function(app) {
   // ---------------------------------------------------------------------------
 
   app.post("/api/friends", function(req, res) {
-    // Note the code here. Our "server" will respond to requests and let users know if they have a friends or not.
+    // Note the code here. Our "server" will respond to requests and let users know if they have a friend or not.
     // It will do this by sending out the value "true" have a friends
     if (friendData.length < 5) {
       friendData.push(req.body);
       res.json(true);
     }
-    else {
+    
+    // else {
 
 //To Do:  waitListData - remove or replace?
-      waitListData.push(req.body);
-      res.json(false);
-    }
+    //   waitListData.push(req.body);
+    //   res.json(false);
+    // }
   });
 
   // ---------------------------------------------------------------------------
