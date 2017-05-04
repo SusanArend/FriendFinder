@@ -23,7 +23,6 @@ module.exports = function(app) {
     res.json(friendData);
   });
 
-
   app.post("/api/friends", function(req, res) {
     
     var bestMatch = {
@@ -53,9 +52,7 @@ module.exports = function(app) {
           bestMatch.matchDifference = totalDifference;
 
         }
-
       }
-
     }
 
     friendData.push(userData);

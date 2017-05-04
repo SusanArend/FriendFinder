@@ -8,24 +8,11 @@
 // But you could have it be an empty array as well.
 // ===============================================================================
 
-var friendData = [
-  {
+var friendData = [{
   "name":"Victory Baby",
   "photo":"https://cdn.meme.am/cache/images/folder667/600x600/1152667/victory-baby.jpg",
-  "scores":[
-      5,
-      1,
-      4,
-      4,
-      5,
-      1,
-      2,
-      5,
-      4,
-      1
-    ]
-  }
-];
+  "scores":[ 5, 4, 3, 2, 1, 2, 3, 4, 5, 5}
+  }];
 
 // Note how we export the array. This makes it accessible to other files using require.
 module.exports = friendData;
