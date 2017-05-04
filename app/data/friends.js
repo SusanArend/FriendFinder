@@ -10,8 +10,8 @@
 
 var friendData = [
   {
-  "name":"Ahmed",
-  "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+  "name":"Victory Baby",
+  "photo":"https://cdn.meme.am/cache/images/folder667/600x600/1152667/victory-baby.jpg",
   "scores":[
       5,
       1,
