@@ -4,64 +4,49 @@
 // These data sources hold arrays of information on friends-data, waitinglist, etc.
 // ===============================================================================
 
-var friendData = require("../data/friends.js");
-var path = require("path");
+var friends = require("../data/friends.js");
 
-var totalDifference = 0;
-// ===============================================================================
-// ROUTING
-// ===============================================================================
+// var path = require("path");
 
 module.exports = function(app) {
-  // API GET Requests
-  // Below code handles when users "visit" a page.
-  // In each of the below cases when a user visits a link
-  // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the friends)
-  // ---------------------------------------------------------------------------
 
   app.get("/api/friends", function(req, res) {
-    res.json(friendData);
+    res.json(friends);
   });
 
   app.post("/api/friends", function(req, res) {
-    
-    var bestMatch = {
-      name: "",
-      image: "",
-      matchDifference: 1000
-    };
 
-    var userData = req.body;
-    var userName = userData.name;
-    var userImage = userData.image;
-    var userScores = scores;
-
+    var newFriend = req.body;
+    var newFriendScores = newFriend.responses;
     var totalDifference = 0;
+    var bestMatch = 100;
+    var friendsIndex = 0;
 
-    for(var i = 0; i < [friendData].length - 1; i++) {
-      console.log(friends[i].name);
+    console.log(newFriend.responses);
+
+    for(var i = 0; i < friends.length; i++) {
       totalDifference = 0;
 
-      for(var x = 0; x <10; x++) {
-        totalDifference += Math.abs(parseInt(userScore[x]) - parseInt(friendData[i].scores[x]));
+      for(var x = 0; x < newFriendScores.length; x++) {
+        var difference = Math.abs(newFriendScores[x] - friends[i].scores[x]);
+        totalDifference += difference;
 
-        if (totalDifference <= bestMatch.friendDifference){
+      }
 
-          bestMatch.name = friendData[i].name;
-          bestMatch.photo = friendData[i].photo;
-          bestMatch.matchDifference = totalDifference;
+      if (totalDifference < bestMatch) {
+        bestMatch = totalDifference;
+        friendsIndex = i;
 
-        }
       }
     }
+    console.log("Best Match", friends[friendsIndex]);
 
-    friendData.push(userData);
-    res.json(bestMatch)
+    friends.push(newFriend);
+    res.json(friends[friendsIndex]);
 
   });
 
 };
-
 
 
 
